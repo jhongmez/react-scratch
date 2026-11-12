@@ -2,7 +2,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { PropertyList } from "./components/PropertyList";
 import { SearchBar } from "./components/SearchBar";
-
+import { properties } from "./data/properties";
 function App() {
   return (
     <div className="app">
@@ -13,7 +13,7 @@ function App() {
 
         <SearchBar />
 
-        <PropertyList />
+        <PropertyList properties={properties} />
       </main>
     </div>
   );
