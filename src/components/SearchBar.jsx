@@ -8,17 +8,34 @@ export function SearchBar() {
 		event.preventDefault();
 		setSearchedCity(city.trim());
 	}
+
+	function handleClearSearch() {
+		setCity("");
+		setSearchedCity("");
+	}
+
 	return (
 		<>
-			<form className="search-box" onSubmit={handleSubmit}>
+			<form className="search-section" onSubmit={handleSubmit}>
 				<label>
 					Ciudad
+					<span className="city-input-wrapper">
 					<input 
 						type="text" 
 						placeholder="Buscar por ciudad" 
 						value={city} 
 						onChange={(event) => setCity(event.target.value)} 
 					/>
+					{( city || searchedCity) && (
+						<button
+							className="clear-city-button"
+							type="button"
+							onClick={handleClearSearch}
+						>
+							x
+						</button>
+					)}
+					</span>
 				</label>
 				<label>
 					Tipo
