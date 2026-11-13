@@ -143,6 +143,23 @@ main {
   gap: 1.5rem;
 }
 
+.current-search {
+  width: fit-content;
+  margin: 0 auto 2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #24385b;
+  border-radius: 999px;
+  background: rgba(18, 31, 61, 0.9);
+  color: #becde3;
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+.current-search strong {
+  color: #98ca3f;
+}
+
+
 .property-card {
   overflow: hidden;
   background: #121f3d;
