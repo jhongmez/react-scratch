@@ -1,20 +1,14 @@
-import { useState } from "react";
-
-export function SearchBar({ onSearch }) {
-	const [city, setCity] = useState("");
-	const [searchedCity, setSearchedCity] = useState("");
+export function SearchBar({ 
+	value, 
+	searchedValue, 
+	onChange,
+	onSearch,
+	onClear
+}) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		const nextSearch = city.trim();
-		setSearchedCity(nextSearch);
-		onSearch(nextSearch);
-	}
-
-	function handleClearSearch() {
-		setCity("");
-		setSearchedCity("");
-		onSearch("");
+		onSearch(value.trim());
 	}
 
 	return (
@@ -26,14 +20,14 @@ export function SearchBar({ onSearch }) {
 					<input 
 						type="text" 
 						placeholder="Buscar por ciudad" 
-						value={city} 
-						onChange={(event) => setCity(event.target.value)} 
+						value={value} 
+						onChange={(event) => onChange(event.target.value)} 
 					/>
-					{( city || searchedCity) && (
+					{( value || searchedValue ) && (
 						<button
 							className="clear-city-button"
 							type="button"
-							onClick={handleClearSearch}
+							onClick={onClear}
 						>
 							x
 						</button>
@@ -46,12 +40,12 @@ export function SearchBar({ onSearch }) {
 				</label>
 				<label>
 					Huéspedes
-					<input type="number" placeholder="2" />
+					<input type="number" placeholder="0" />
 				</label>
 				<button>Buscar</button>
 			</form>
 			<p className="current-search">
-				Resultado de búsqueda: <strong>{ searchedCity || "Sin búsqueda" }</strong>
+				Resultado de búsqueda: <strong>{ searchedValue || "Sin búsqueda" }</strong>
 			</p>
 		</>
 	);

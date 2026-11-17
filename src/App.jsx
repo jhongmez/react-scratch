@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -7,9 +7,17 @@ import { SearchBar } from "./components/SearchBar";
 import { properties } from "./data/properties";
 
 function App() {
+  const [ city, setCity ] = useState("");
   const [ search, setSearch ] = useState("");
+  const [ propertiesFromAPI, setpropertiesFromAPI ] = useState([]);
 
-  const filteredProperties = properties.filter ( (property) => {
+  useEffect( () => {
+    setTimeout( () => {
+      setpropertiesFromAPI(properties);
+    }, 1000)
+  }, []);
+
+  const filteredProperties = propertiesFromAPI.filter ( (property) => {
     const searchText = search.toLowerCase();
 
     return (
@@ -26,7 +34,16 @@ function App() {
       <main className="main-content">
         <Hero />
 
-        <SearchBar onSearch={setSearch} />
+        <SearchBar 
+        valueCity={city}
+        searchedValue={search}
+        onChange={setCity}
+        onSearch={setSearch}
+        onClear={ () => {
+          setCity("");
+          setSearch("");
+        }}
+        />
 
         <PropertyList properties={filteredProperties} />
       </main>
