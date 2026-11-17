@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { Header } from "./components/layout/Header";
 import { Hero } from "./components/ui/Hero";
-import { PropertyList } from "./components/PropertyList";
+import { PropertyList } from "./components/properties/PropertyList";
 import { SearchBar } from "./components/ui/SearchBar";
 import { properties } from "./data/properties";
 import { filterProperties } from "./utils/filterProperties";
