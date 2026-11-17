@@ -1,4 +1,4 @@
-import { PropertyCard } from "./PropertyCard";
+import { PropertyCard } from "./properties/PropertyCard";
 
 export function PropertyList({ properties }) {
 	if ( properties.length === 0 ) {

@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
 
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
+import { Header } from "./components/layout/Header";
+import { Hero } from "./components/ui/Hero";
 import { PropertyList } from "./components/PropertyList";
-import { SearchBar } from "./components/SearchBar";
+import { SearchBar } from "./components/ui/SearchBar";
 import { properties } from "./data/properties";
+import { filterProperties } from "./utils/filterProperties";
 
 function App() {
   const [ city, setCity ] = useState("");
   const [ search, setSearch ] = useState("");
-  const [ propertiesFromAPI, setpropertiesFromAPI ] = useState([]);
+  const [ propertyList, setPropertyList ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
   const [ isError, setIsError ] = useState(null);
 
   useEffect( () => {
     const timerId = setTimeout( () => {
       try {
-        setpropertiesFromAPI(properties);
+        setPropertyList(properties);
       } catch {
         setIsError("No pudimos cargar las propiedades")
       } finally {
@@ -27,15 +28,7 @@ function App() {
     return () => clearTimeout(timerId);
   }, []);
 
-  const filteredProperties = propertiesFromAPI.filter ( (property) => {
-    const searchText = search.toLowerCase();
-
-    return (
-      property.title.toLowerCase().includes(searchText) ||
-      property.type.toLowerCase().includes(searchText) ||
-      property.location.toLowerCase().includes(searchText)
-    );
-  })
+  const filteredProperties = filterProperties(propertyList, search);
 
   return (
     <div className="app">
