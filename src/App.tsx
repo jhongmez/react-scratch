@@ -4,15 +4,17 @@ import { Header } from "./components/layout/Header";
 import { Hero } from "./components/ui/Hero";
 import { PropertyList } from "./components/properties/PropertyList";
 import { SearchBar } from "./components/ui/SearchBar";
+
 import { properties } from "./data/properties";
 import { filterProperties } from "./utils/filterProperties";
+import { PropertyType } from "./types/propertyType";
 
 function App() {
   const [ city, setCity ] = useState("");
   const [ search, setSearch ] = useState("");
-  const [ propertyList, setPropertyList ] = useState([]);
+  const [ propertyList, setPropertyList ] = useState<PropertyType[]>([]);
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ isError, setIsError ] = useState(null);
+  const [ isError, setIsError ] = useState<string | null>(null);
 
   useEffect( () => {
     const timerId = setTimeout( () => {
@@ -38,7 +40,7 @@ function App() {
         <Hero />
 
         <SearchBar 
-        valueCity={city}
+        value={city}
         searchedValue={search}
         onChange={setCity}
         onSearch={setSearch}

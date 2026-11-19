@@ -1,12 +1,26 @@
+import { ChangeEvent, ComponentProps } from "react";
+
+type searchBarProps = {
+	value: string;
+	searchedValue: string;
+	onChange: (value: string) => void;
+	onSearch: (value: string) => void;
+	onClear: () => void;
+}
+
 export function SearchBar({ 
 	value, 
 	searchedValue, 
 	onChange,
 	onSearch,
 	onClear
-}) {
+}: searchBarProps) {
 
-	function handleSubmit(event) {
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		onChange(event.target.value);
+	}
+
+	const handleSubmit: NonNullable<ComponentProps<"form">["onSubmit"]> = (event) => {
 		event.preventDefault();
 		onSearch(value.trim());
 	}
@@ -21,7 +35,7 @@ export function SearchBar({
 						type="text" 
 						placeholder="Buscar por ciudad" 
 						value={value} 
-						onChange={(event) => onChange(event.target.value)} 
+						onChange={(event) => handleChange(event)} 
 					/>
 					{( value || searchedValue ) && (
 						<button
