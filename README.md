@@ -1,19 +1,75 @@
-# React + Vite
+# Vite Básico - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado como parte del curso **React.js: Fundamentos del Lenguaje y Hooks Básicos** de [Platzi](https://platzi.com), en el cual me certifiqué. Es una aplicación de práctica que simula un listado de propiedades inmobiliarias, construida para aprender y aplicar los conceptos básicos de React.
 
-Currently, two official plugins are available:
+Originalmente escrito en JavaScript, el proyecto fue migrado a **TypeScript** como ejercicio adicional de aprendizaje.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Conceptos aplicados
 
-## React Compiler
+- Componentes funcionales y composición de componentes
+- Hooks: `useState` y `useEffect`
+- Manejo de estados de carga y error (loading / error states)
+- Filtrado de datos mediante funciones utilitarias
+- Tipado estático con TypeScript (`types`, interfaces de props)
+- Organización de carpetas por dominio (`components`, `data`, `types`, `utils`)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Estructura del proyecto
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+```
+src/
+├── assets/                  # Imágenes y recursos estáticos
+├── components/
+│   ├── layout/               # Header y componentes de estructura
+│   ├── properties/           # PropertyCard, PropertyList
+│   └── ui/                   # Hero, SearchBar
+├── data/                     # Datos de ejemplo (properties.ts)
+├── types/                    # Definiciones de tipos (propertyType.ts)
+├── utils/                    # Funciones utilitarias (filterProperties.ts)
+├── App.tsx
+└── main.tsx
+```
 
-## Expanding the ESLint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Bun](https://bun.sh/) como gestor de paquetes y runtime
+- ESLint
+
+## Requisitos previos
+
+Tener instalado [Bun](https://bun.sh/) en tu sistema:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+## Instalación
+
+Clona el repositorio e instala las dependencias con Bun:
+
+```bash
+bun install
+```
+
+## Comandos disponibles
+
+| Comando        | Descripción                                      |
+| -------------- | ------------------------------------------------- |
+| `bun dev`     | Inicia el servidor de desarrollo con hot reload   |
+| `bun run build` | Genera el build de producción                   |
+| `bun run preview` | Previsualiza el build de producción            |
+| `bun run lint`  | Ejecuta ESLint sobre el proyecto                  |
+
+## Ejecutar el proyecto
+
+```bash
+bun dev
+```
+
+Esto levantará el servidor de desarrollo en `http://localhost:5173` (puerto por defecto de Vite).
+
+## Créditos
+
+Proyecto realizado siguiendo el curso de [Platzi](https://platzi.com) sobre fundamentos de React.js.
